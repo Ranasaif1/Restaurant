@@ -3,14 +3,14 @@ import { motion } from 'framer-motion';
 
 const menuItems = {
   salads: [
-    { name: 'Caesar Salad', price: '$12', desc: 'Romaine, croutons, parmesan' },
-    { name: 'Greek Salad', price: '$14', desc: 'Feta, olives, tomatoes, cucumber' },
-    { name: 'Caprese', price: '$15', desc: 'Mozzarella, tomatoes, basil' },
+    { name: 'Caesar Salad', price: 'Rs. 1,200', desc: 'Romaine, croutons, parmesan' },
+    { name: 'Greek Salad', price: 'Rs. 1,400', desc: 'Feta, olives, tomatoes, cucumber' },
+    { name: 'Caprese', price: 'Rs. 1,500', desc: 'Mozzarella, tomatoes, basil' },
   ],
   mains: [
-    { name: 'Grilled Salmon', price: '$32', desc: 'Asparagus, lemon butter sauce' },
-    { name: 'Ribeye Steak', price: '$45', desc: 'Mashed potatoes, peppercorn sauce' },
-    { name: 'Chicken Parmesan', price: '$26', desc: 'Marinara, mozzarella, pasta' },
+    { name: 'Grilled Salmon', price: 'Rs. 3,200', desc: 'Asparagus, lemon butter sauce' },
+    { name: 'Ribeye Steak', price: 'Rs. 4,500', desc: 'Mashed potatoes, peppercorn sauce' },
+    { name: 'Chicken Parmesan', price: 'Rs. 2,600', desc: 'Marinara, mozzarella, pasta' },
   ]
 };
 
@@ -36,20 +36,22 @@ const MenuList = ({ title, items }) => (
     viewport={{ once: true, amount: 0.2 }}
     variants={listVariants}
   >
-    <h3 className="text-2xl font-serif mb-8 text-[#cda365] uppercase tracking-widest">{title}</h3>
-    <div className="flex flex-col gap-6">
+    <h3 className="text-xl md:text-2xl font-serif mb-6 md:mb-8 text-[#cda365] uppercase tracking-widest text-center md:text-left">
+      {title}
+    </h3>
+    <div className="flex flex-col gap-5 md:gap-6">
       {items.map((item, idx) => (
-        <motion.div key={idx} variants={itemVariants} className="flex flex-col group">
+        <motion.div key={idx} variants={itemVariants} className="flex flex-col group px-2 md:px-0">
           <div className="flex items-end justify-between w-full">
-            <span className="text-lg font-serif tracking-wide whitespace-nowrap bg-[#0a0a0a] pr-2 group-hover:text-[#cda365] transition-colors duration-300">
+            <span className="text-base md:text-lg font-serif tracking-wide whitespace-nowrap bg-[#0a0a0a] pr-2 md:pr-3 group-hover:text-[#cda365] transition-colors duration-300">
               {item.name}
             </span>
-            <div className="grow border-b border-dotted border-gray-700 mb-1.5 mx-2 opacity-50"></div>
-            <span className="text-lg text-[#cda365] font-serif bg-[#0a0a0a] pl-2">
+            <div className="grow border-b border-dotted border-gray-700 mb-1.5 mx-1 md:mx-2 opacity-50"></div>
+            <span className="text-base md:text-lg text-[#cda365] font-serif bg-[#0a0a0a] pl-2 md:pl-3 whitespace-nowrap">
               {item.price}
             </span>
           </div>
-          <p className="text-xs text-gray-400 mt-1 italic">{item.desc}</p>
+          <p className="text-[10px] md:text-xs text-gray-400 mt-1 italic">{item.desc}</p>
         </motion.div>
       ))}
     </div>
@@ -58,7 +60,7 @@ const MenuList = ({ title, items }) => (
 
 const ALaCarte = () => {
   return (
-    <section className="py-24 bg-[#0a0a0a] text-white">
+    <section className="py-16 md:py-24 bg-[#0a0a0a] text-white">
       
       {/* Animated Section Header */}
       <motion.div 
@@ -66,20 +68,20 @@ const ALaCarte = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.8 }}
-        className="text-center mb-16 flex flex-col items-center px-4"
+        className="text-center mb-12 md:mb-16 flex flex-col items-center px-4"
       >
-        <span className="text-[#cda365] text-xs md:text-sm tracking-[0.2em] font-semibold uppercase mb-3">
+        <span className="text-[#cda365] text-[10px] md:text-sm tracking-[0.2em] font-semibold uppercase mb-2 md:mb-3">
           Main Course
         </span>
-        <h2 className="text-4xl md:text-5xl font-serif mt-2 tracking-widest uppercase flex items-center gap-4 drop-shadow-lg">
-          <span className="text-2xl text-gray-700">★</span>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif mt-2 tracking-widest uppercase flex items-center gap-3 md:gap-4 drop-shadow-lg">
+          <span className="text-xl md:text-2xl text-gray-700">★</span>
           À La Carte
-          <span className="text-2xl text-gray-700">★</span>
+          <span className="text-xl md:text-2xl text-gray-700">★</span>
         </h2>
       </motion.div>
 
       {/* Menu Grid */}
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 lg:gap-24">
         <MenuList title="Salads" items={menuItems.salads} />
         <MenuList title="Mains" items={menuItems.mains} />
       </div>
@@ -90,9 +92,9 @@ const ALaCarte = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.6, duration: 1 }}
-        className="text-center mt-20"
+        className="text-center mt-12 md:mt-20"
       >
-        <button className="bg-transparent border border-[#cda365] text-[#cda365] hover:bg-[#cda365] hover:text-white transition-colors duration-300 px-10 py-3.5 text-xs tracking-[0.2em] uppercase font-semibold">
+        <button className="bg-transparent border border-[#cda365] text-[#cda365] hover:bg-[#cda365] hover:text-white transition-colors duration-300 px-8 md:px-10 py-3 md:py-3.5 text-[10px] md:text-xs tracking-[0.2em] uppercase font-semibold">
           View Full Menu
         </button>
       </motion.div>
